@@ -1,0 +1,26 @@
+1) Specificity is the weight that applies to this CSS declaration
+
+The following list of selector types increases by specificity:
+
+Type selectors (e.g., h1) and pseudo-elements (e.g., ::before).
+Class selectors (e.g., .example), attributes selectors (e.g., [type="radio"]) and pseudo-classes (e.g., :hover).
+ID selectors (e.g., #example).
+
+2) When an important rule is used on a style declaration, this declaration overrides any other declarations.
+Although technically !important has nothing to do with specificity, it interacts directly with it.
+Using !important, however, is bad practice and should be avoided because it makes debugging more difficult by breaking the natural cascading
+in your stylesheets. When two conflicting declarations with the !important rule are applied to the same element,
+the declaration with a greater specificity will be applied.
+
+Some rules of thumb:
+
+Always look for a way to use specificity before even considering !important
+Only use !important on page-specific CSS that overrides foreign CSS (from external libraries, like Bootstrap or normalize.css).
+Never use !important when you're writing a plugin/mashup.
+Never use !important on site-wide CSS.
+
+3) My prefered layout system is flex, modern libraries are written with flex, it is very simple to use
+
+4) No; it's not bad practice, so long as you're aware of the fact you're using negative margins, and that this necessarily 'pulls'/'moves' elements from their otherwise-'normal' position.
+
+5) We can add float,display or position property

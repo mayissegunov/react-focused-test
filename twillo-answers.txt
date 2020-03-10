@@ -1,0 +1,5 @@
+/**
+ * Twillo
+ */
+
+1) I have used whatsapp and SMS api for OTP confirmation

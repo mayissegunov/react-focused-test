@@ -1,0 +1,30 @@
+/**
+ * RXjs
+ */
+1)
+
+* Subject - a subscriber will only get published values that were emitted after the subscription. Ask yourself, is that what you want? Does the subscriber need to know anything about previous values? If not, then you can use this, otherwise choose one of the others. For example, with component-to-component communication. Say you have a component that publishes events for other components on a button click. You can use a service with a subject to communicate.
+
+* BehaviorSubject - the last value is cached. A subscriber will get the latest value upon initial subscription. The semantics for this subject is to represent a value that changes over time. For example a logged in user. The initial user might be an anonymous user. But once a user logs in, then the new value is the authenticated user state.
+
+The BehaviorSubject is initialized with an initial value. This is sometimes important to coding preference. Say for instance you initialize it with a null. Then in your subscription, you need to do a null check. Maybe OK, or maybe annoying.
+
+* ReplaySubject - it can cache up to a specified number of emissions. Any subscribers will get all the cached values upon subscription. When would you need this behavior? Honestly, I have not had any need for such behavior, except for the following case:
+
+2)
+
+import { ReplaySubject } from 'rxjs';
+
+const sub = new ReplaySubject([1,2]);
+sub.next([1,2]);
+sub.next([3,4]);
+sub.next([5,6,7]);
+
+arrayEmitting$.concatMap(sub)
+
+3)
+
+  .pipe(
+    toArray()
+  )
+  .subscribe(console.log);
